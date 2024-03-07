@@ -1,3 +1,8 @@
+<?php
+if(isset($_GET['course'])){
+    echo $_GET['course'];
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
