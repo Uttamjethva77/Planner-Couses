@@ -1,0 +1,17 @@
+INSERT INTO `courses` (`course_name`, `image_url`) VALUES
+('Introduction to BOOTSRAP', 'https://miro.medium.com/v2/resize:fit:640/format:webp/1*onZhQJU7A3ab6V1sHfMRkQ.jpeg'),
+('Introduction to HTML5', 'https://cdn.pixabay.com/photo/2017/08/05/11/16/logo-2582748_1280.png');
+
+INSERT INTO course_details (course_name, title, description, link) 
+VALUES 
+('Introduction to HTML5', 'HTML Introduction in Hindi', 'Here is a small description of html.Those who want to become web designer or web developer they must learn html because html is the base of web development.', 'https://youtu.be/GpcMasRWUhI?si=7Xru3PNavLDptIYe'),
+('Introduction to HTML5', 'HTML Basic Syntax in Hindi', 'In this tutorial you are going to learn basic syntax of HTML coding in hindi.', 'https://youtu.be/V1JBgugIL8w?si=fDbbp4GbxIbRVUoi'),
+('HTML Basic Syntax Practical in Hindi', '
+In this tutorial you are going to learn basic syntax of HTML coding in hindi with practical example.', 'Description of Course 3', 'https://youtu.be/Tu14tj4ar_A?si=A2OO-sIiYmE0Ae1p'),
+('Introduction to HTML5', 'HTML Text Formatting Tags Tutorial in Hindi', 'In this tutorial you are going to learn basic text formatting tags in hindi. Tags related to heading, paragraphs, bold, italic, underline and strikethrough in html.', 'https://youtu.be/YBmpqYthJJ8?si=dxoDpAY5D3ODIn3A'),
+('Introduction to HTML5', 'HTML Text Formatting Tags Tutorial in Hindi', 'In this tutorial you are going to learn basic text formatting tags of HTML coding in hindi language.This video contain Html break tag, superscript, subscript tag and non-break space entity code tutorial.', 'https://youtu.be/XwXkZ74vQ4E?si=ejWLeSYN60nuQj9n'),
+('Introduction to HTML5', 'HTML Text Formatting Font Tag Tutorial in Hindi', 'In this tutorial you are going to learn basic text formatting font tag of HTML coding in hindi language.This video contain Html break tag, superscript, subscript tag and non-break space entity code tutorial.', 'https://youtu.be/jCsIho1SacM?si=0WjHIXLHwCNoHtnA'),
+('Introduction to HTML5', 'HTML Listing Tags Tutorial in Hindi ', 'In this tutorial you are going to learn html list tags in hindi language.This video contain Html unorder list and order list code tutorial.', 'https://youtu.be/PDWMjxt3XWQ?si=PpU7Bf49fbJ7ayTw'),
+('Introduction to HTML5', 'HTML Listing Tags Tutorial in Hindi ', 'In this tutorial you are going to learn html description list tags in hindi language.In other words you can say that html dl dt tags.', 'https://youtu.be/1A2RvJur8rA?si=xjbThyjKSZ_6NNCQ'),
+('Introduction to HTML5', 'HTML Marquee Tag Tutorial in Hindi ', 'In this tutorial you are going to learn html marquee tag in hindi and urdu language.This video contain Html animated marquee tag or ticker tag tutorial.', 'https://youtu.be/2-wS6hfqz9A?si=c8OXoXolMXQZ1hYv'),
+('Introduction to HTML5', 'HTML Preformated & Horizontal Rule Tag Tutorial in Hindi', 'In this tutorial you are going to learn html preformated tag and horizontal rule tag in hindi language.This video contain Html pre tag and html hr tag code tutorial.', 'https://youtu.be/jWjlVq2NlsY?si=HeiHJAlBQEuxAQ0h');
