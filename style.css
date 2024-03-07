@@ -16,3 +16,20 @@
     height: 100%;
     /* Set the height to whatever you need */
 }
+
+.table-bordered td {
+    border-right: 1px solid black;
+}
+
+/* Add this to your style.css file */
+
+/* Default styles */
+.table-responsive {
+    overflow-x: auto;
+}
+
+.extra-small-text {
+    font-size: 12px;
+    word-spacing: 0;
+    /* Adjust the font size as needed */
+}
