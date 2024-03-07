@@ -23,7 +23,7 @@ $result = $conn->query($sql);
 </head>
 
 <body>
-    <?php include 'header.php'; ?>
+    <h2 class="text-center"><?php echo $_GET['course']; ?></h2>
     <div class="container">
         <div class="raw">
             <div class="col">
@@ -33,7 +33,8 @@ $result = $conn->query($sql);
             </div>
         </div>
         <div class="raw">
-            <table class="table">
+            <div class="table-responsive">
+            <table class="table table-bordered border-black">
                 <thead>
                     <tr>
                         <th scope="col">Part</th>
@@ -47,10 +48,14 @@ $result = $conn->query($sql);
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
                             echo '<tr>
-                                    <td>' . $row['id'] . '</td>
+                                    <td >' . $row['id'] . '</td>
                                     <td>' . $row['title'] . '</td>
-                                    <td>' . $row['description'] . '</td>
-                                    <td><button onclick="videochange(\'' . $row['link'] . '\')" class="btn btn-primary btn-sm">Watch Video</button></td>
+                                    <td>
+    <div class="container-sm" style="max-height: 120px; overflow-y: scroll;">
+        <small class="extra-small-text">' . $row['description'] . '</small>
+    </div>
+</td>
+                                    <td><button onclick="videochange(\'' . $row['link'] . '\')" class="btn btn-outline-primary btn-sm">Watch Video</button></td>
                                 </tr>';
                         }
                     } else {
@@ -60,6 +65,7 @@ $result = $conn->query($sql);
                     ?>
                 </tbody>
             </table>
+        </div>
         </div>
         <?php include 'footer.php'; ?>
     </div>
@@ -91,10 +97,14 @@ $result = $conn->query($sql);
         iframe.allowfullscreen = true;
 
         playerDiv.appendChild(iframe);
+
+        // Scroll to the iframe
+        playerDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
     } else {
         console.error('Invalid YouTube video link:', link);
     }
 }
+
 
 </script>
 <script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
