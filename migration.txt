@@ -12,3 +12,35 @@ CREATE TABLE course_details (
     link VARCHAR(1000),
     FOREIGN KEY (course_name) REFERENCES courses(course_name)
 );
+
+CREATE TABLE user-table (
+    id INT PRIMARY KEY,
+    username VARCHAR(255),
+    email VARCHAR(255),
+    phone_number VARCHAR(255),
+    full_name VARCHAR(255),
+    password VARCHAR(255)
+);
+ALTER TABLE user_table MODIFY COLUMN id INT AUTO_INCREMENT;
+
+CREATE TABLE thread (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255),
+    description VARCHAR(5000),
+    created_date DATE DEFAULT CURRENT_DATE,
+    user_id INT,
+    course_detail_id INT,
+    image_path VARCHAR(500),
+    FOREIGN KEY (user_id) REFERENCES user_table(id),
+    FOREIGN KEY (course_detail_id) REFERENCES course_details(id)
+);
+
+CREATE TABLE thread_reply (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    thread_id INT,
+    comment VARCHAR(1000),
+    created_at DATE DEFAULT CURRENT_DATE,
+    FOREIGN KEY (thread_id) REFERENCES thread(id)
+);
+
+
