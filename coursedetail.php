@@ -1,8 +1,15 @@
 <?php
+include 'connectplan.php';
+
 if(isset($_GET['course'])){
-    echo $_GET['course'];
+    $courses = $_GET['course'];
 }
+
+$sql = "SELECT * FROM course_details WHERE course_name = '$courses'";
+$result = $conn->query($sql);
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,13 +23,11 @@ if(isset($_GET['course'])){
 </head>
 
 <body>
+    <?php include 'header.php'; ?>
     <div class="container">
         <div class="raw">
-            <h2 class="text-black text-center">Planner</h2>
-        </div>
-        <div class="raw">
             <div class="col">
-                <div class="custom-raw">
+                <div class="custom-raw center-content">
                     <div id="videolink"></div>
                 </div>
             </div>
@@ -31,39 +36,69 @@ if(isset($_GET['course'])){
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
+                        <th scope="col">Part</th>
+                        <th scope="col">Titel</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">See</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td><button onclick="videochange('https://www.youtube.com/embed/Etkd-07gnxM')"
-                                class="btn btn-primary btn-sm">click 1</button></td>
-                    </tr>
+                    <?php
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            echo '<tr>
+                                    <td>' . $row['id'] . '</td>
+                                    <td>' . $row['title'] . '</td>
+                                    <td>' . $row['description'] . '</td>
+                                    <td><button onclick="videochange(\'' . $row['link'] . '\')" class="btn btn-primary btn-sm">Watch Video</button></td>
+                                </tr>';
+                        }
+                    } else {
+                        echo "<tr><td colspan='4'>0 results</td></tr>";
+                    }
+                    $conn->close();
+                    ?>
                 </tbody>
             </table>
         </div>
+        <?php include 'footer.php'; ?>
     </div>
 </body>
 <script>
-    function videochange(id) {
-
-        var videolink = id
-        var autoplay = "?autoplay=1"; // Assuming autoplay should be added as a query parameter
-
-        // Concatenate the videolink and autoplay variables
-        var src = videolink + autoplay;
-        console.log(src)
-        document.getElementById('videolink').innerHTML = `<iframe class="custom-video" src="${src}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+    function getVideoId(link) {
+    var videoId = '';
+    var regExp = /^.*(youtu.be\/|v\/|e\/|u\/\w+\/|embed\/|v=)([^#\&\?]*).*/;
+    var match = link.match(regExp);
+    if (match && match[2].length === 11) {
+        videoId = match[2];
     }
+    return videoId;
+}
+    function videochange(link) {
+    var videoId = getVideoId(link);
+    if (videoId) {
+        var playerDiv = document.getElementById('videolink');
+        playerDiv.innerHTML = ''; // Clear any existing iframe
+
+        var iframe = document.createElement('iframe');
+        iframe.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1';
+        iframe.width = '560';
+        iframe.height = '315';
+        iframe.style.maxWidth = '100%'; // Set maximum width to 100% of parent container
+        iframe.style.maxHeight = '100%'; // Set maximum height to 100% of parent container
+        iframe.frameborder = '0';
+        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+        iframe.allowfullscreen = true;
+
+        playerDiv.appendChild(iframe);
+    } else {
+        console.error('Invalid YouTube video link:', link);
+    }
+}
+
 </script>
 <script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-    </script>
+</script>
 
 </html>
