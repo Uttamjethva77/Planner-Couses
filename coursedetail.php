@@ -118,7 +118,9 @@ else{
                                     <small class="extra-small-text">' . $row['description'] . '</small>
                                     </div>
                                     </td>
-                                    <td><button onclick="videochange(\'' . $row['link'] . '\')" class="btn btn-outline-primary btn-sm">Watch Video</button></td>
+                                    <td><button onclick="videochange(\'' . $row['link'] . '\')" class="btn btn-outline-primary btn-sm">Watch Video</button>
+                                    <a href="commnunitychat.php?userid=&coursedeailid=' . $row['id'] . '" class="btn btn-outline-primary btn-sm mt-2">Community Chat</a>
+                                    </td>
                                 </tr>';
                         }
                     } else {
@@ -134,7 +136,9 @@ else{
                                     <small class="extra-small-text">' . $description . '</small>
                                     </div>
                                     </td>
-                                    <td><button onclick="videochange(\'' . $link . '\')" class="btn btn-outline-primary btn-sm">Watch Video</button></td>
+                                    <td><button onclick="videochange(\'' . $link . '\')" class="btn btn-outline-primary btn-sm">Watch Video</button>
+                                    <a href="commnunitychat.php?userid=&coursedeailid=' . $row['id'] . '" class="btn btn-outline-primary btn-sm mt-2">Community Chat</a>
+                                    </td>
                                 </tr>';
                     }
                     
